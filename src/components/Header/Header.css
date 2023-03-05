@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 32px;
+    background-color: #E5E5E5;
+  }
+  
+  .header__title {
+    margin: 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    color: #424242;
+  }
+  
+  .header-link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+  }
+  
+  .header-link:hover {
+    opacity: 0.5;
+  }
+  
+  .header-link__text {
+    margin: 0 12px 0 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: -0.408px;
+    color: #41522E;
+  }
+  
+  .header-link__logo {
+    width: 24px;
+    height: 24px;
+  }
