@@ -3,10 +3,6 @@ body {
   background-color: #E5E5E5;
 }
 
-.login {
-  background-image: url(../../images/background.webp);
-}
-
 .hotels__container {
   max-height: 906px;
   margin: 0 184px 26px 208px;
