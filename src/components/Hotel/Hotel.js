@@ -22,7 +22,7 @@ function Hotel({ hotel }) {
       </div>
       <div className="hotel__rating">
         {[...Array(5)].map((star, index) =>
-          index + 1 < hotel.stars ? (
+          index < hotel.stars ? (
             <img
               key={index}
               className="hotel_star"

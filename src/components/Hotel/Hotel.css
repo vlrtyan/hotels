@@ -69,13 +69,24 @@
   
   .hotel__like {
     grid-area: like;
-    margin: 0 8px 0 auto;
+    margin: 0 0 0 auto;
     width: 21px;
     height: 18px;
-    background-image: url(../../images/like-active.svg);
+    background-image: url(../../images/like-inactive.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
     border: none;
     background-color: transparent;
     cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  .hotel__like:hover {
+    background-image: url(../../images/like-hover.svg);
+  }
+  
+  .hotel__like_active {
+    background-image: url(../../images/like-active.svg);
   }
   
   .hotel__price {
