@@ -1,9 +1,9 @@
 import React from "react";
 import "./SearchForm.css";
 // import { validation } from "../../utils/validation";
+import { today } from "../../utils/constants";
 
 function SearchForm({ handleSearch }) {
-  const today = new Date().toISOString().split("T")[0];
   const [formData, setFormData] = React.useState({
     city: "Москва",
     date: today,

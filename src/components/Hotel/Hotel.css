@@ -1,0 +1,100 @@
+.hotel {
+    padding: 16px 16px 16px 0;
+    display: grid;
+    grid-template-areas:
+      "image name like"
+      "image duration ."
+      "image rating price";
+    grid-template-columns: min-content auto auto;
+    border-bottom: rgba(135, 135, 135, 0.2) solid 1px;
+  }
+  
+  .hotel__image {
+    grid-area: image;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 3px 24px 0 0;
+  }
+  
+  .hotel__name {
+    margin: 3px 0 0 0;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.29;
+    letter-spacing: -0.408px;
+    color: #424242;
+    grid-area: name;
+  }
+  
+  .hotel__duration {
+    grid-area: duration;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.57;
+    letter-spacing: -0.408px;
+    color: #878787;
+  }
+  
+  .hotel__date {
+    margin: 0 24px 0 0;
+  }
+  
+  .hotel__days {
+    margin: 0;
+  }
+  
+  .hotel__dash {
+    margin-right: 10px;
+    width: 9px;
+  }
+  
+  .hotel__rating {
+    grid-area: rating;
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+  }
+  
+  .hotel__star {
+    width: 17px;
+    height: 17px;
+  }
+  
+  .hotel__like {
+    grid-area: like;
+    margin: 0 8px 0 auto;
+    width: 21px;
+    height: 18px;
+    background-image: url(../../images/like-active.svg);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .hotel__price {
+    margin: -6px 0 0 0;
+    grid-area: price;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 11px;
+    line-height: 2;
+    text-align: right;
+    letter-spacing: -0.408px;
+    color: #878787;
+  }
+  
+  .span_type_hotel-price {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.29;
+    letter-spacing: -0.408px;
+    color: #424242;
+    margin-left: 20px;
+  }

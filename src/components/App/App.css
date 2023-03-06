@@ -11,10 +11,10 @@ body {
 
 .hotels {
   background-color: #E5E5E5;
-
 }
 
 .hotels__container {
+  max-height: 906px;
   margin: 0 184px 26px 208px;
   display: grid;
   grid-template-areas:
@@ -33,6 +33,7 @@ body {
   background-color: white;
   padding: 32px;
   width: 296px;
+  height: 408px;
   box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
 }
@@ -82,202 +83,6 @@ body {
 
 .favourites__list {
   width: 100%;
-}
-
-.hotel {
-  padding: 16px 16px 16px 0;
-  display: grid;
-  grid-template-areas:
-    "image name like"
-    "image duration ."
-    "image rating price";
-  grid-template-columns: min-content auto auto;
-  border-bottom: rgba(135, 135, 135, 0.2) solid 1px;
-}
-
-.hotel__image {
-  grid-area: image;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  margin: 3px 24px 0 0;
-}
-
-.hotel__name {
-  margin: 3px 0 0 0;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 17px;
-  line-height: 1.29;
-  letter-spacing: -0.408px;
-  color: #424242;
-  grid-area: name;
-}
-
-.hotel__duration {
-  grid-area: duration;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.57;
-  letter-spacing: -0.408px;
-  color: #878787;
-}
-
-.hotel__date {
-  margin: 0 24px 0 0;
-}
-
-.hotel__days {
-  margin: 0;
-}
-
-.hotel__dash {
-  margin-right: 10px;
-  width: 9px;
-}
-
-.hotel__rating {
-  grid-area: rating;
-  display: flex;
-  flex-direction: row;
-  gap: 3px;
-  align-items: center;
-}
-
-.hotel__star {
-  width: 17px;
-  height: 17px;
-}
-
-.hotel__like {
-  grid-area: like;
-  margin: 0 8px 0 auto;
-  width: 21px;
-  height: 18px;
-  background-image: url(../../images/like-active.svg);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.hotel__price {
-  margin: -6px 0 0 0;
-  grid-area: price;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 11px;
-  line-height: 2;
-  text-align: right;
-  letter-spacing: -0.408px;
-  color: #878787;
-}
-
-.span_type_hotel-price {
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 1.29;
-  letter-spacing: -0.408px;
-  color: #424242;
-  margin-left: 20px;
-}
-
-.catalogue {
-  grid-area: catalogue;
-  background: #FFFFFF;
-  box-shadow: 0px 4px 33px rgba(0, 0, 0, 0.04);
-  border-radius: 16px;
-}
-
-.catalogue__header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin: 48px 32px 28px;
-}
-
-.catalogue__checkin-date {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 28px;
-  color: #41522E;
-  margin: 0;
-}
-
-.breadcrumb-navigation {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-}
-
-.breadcrumb-navigation__link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 38px;
-  color: #424242;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
-.breadcrumb-navigation__divider {
-  margin-right: 20px;
-}
-
-.breadcrumb-navigation__item:last-of-type .breadcrumb-navigation__divider {
-  display: none;
-}
-
-.breadcrumb-navigation__item:last-of-type .breadcrumb-navigation__link {
-  margin-right: 0;
-}
-
-/* .breadcrumb-navigation__divider {} */
-
-.catalogue-carousel {
-  display: flex;
-  flex-direction: row;
-  gap: 12px;
-  overflow: hidden;
-  padding: 0 0 28px 32px;
-  margin-right: 32px;
-}
-
-.catalogue-carousel__photo {
-  width: 164px;
-  height: 149px;
-  flex-shrink: 0;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
-  border-radius: 10px;
-  border: none;
-}
-
-.catalogue__favourites {
-  margin: 0 32px 20px;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 17px;
-  line-height: 1.29;
-  letter-spacing: -0.408px;
-  color: #424242;
-}
-
-.catalogue__span {
-  font-weight: 500;
-  margin: 0 4px 0 8px;
-}
-
-.catalogue__list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 46px 48px 32px;
 }
 
 .favourite {
@@ -353,7 +158,10 @@ body {
   gap: 3px;
 }
 
-.favourite__star {}
+.favourite__star {
+  width: 17px;
+  height: 17px;
+}
 
 .favourite__price {
   grid-area: fav-price;
