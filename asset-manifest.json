@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "./static/css/main.a22f13be.css",
+    "main.js": "./static/js/main.3a2762f9.js",
+    "static/media/background.webp": "./static/media/background.17010c019d2d6a10bdc4.webp",
+    "static/media/Roboto-Medium.woff": "./static/media/Roboto-Medium.61c265591865cecb1c3d.woff",
+    "static/media/Roboto-Regular.woff": "./static/media/Roboto-Regular.774f99460b8c31560a3c.woff",
+    "static/media/Roboto-Light.woff": "./static/media/Roboto-Light.19a99746405e8730f34c.woff",
+    "static/media/Roboto-Medium.woff2": "./static/media/Roboto-Medium.70ace3870f471997ceb7.woff2",
+    "static/media/Roboto-Regular.woff2": "./static/media/Roboto-Regular.9429985be4f46ec8fcfc.woff2",
+    "static/media/Roboto-Light.woff2": "./static/media/Roboto-Light.81c7589f0813d50a673e.woff2",
+    "static/media/img-3.webp": "./static/media/img-3.55c0c88a115f4b594eb9.webp",
+    "static/media/img-1.webp": "./static/media/img-1.366c0727b5e132e32c2e.webp",
+    "static/media/img-4.webp": "./static/media/img-4.04c851a1ef473cad1a11.webp",
+    "static/media/star-absent.svg": "./static/media/star-absent.8f1b0d15f28a809ac23aed477c658507.svg",
+    "static/media/img-2.webp": "./static/media/img-2.9cb0dcc37f17b7ddf7ac.webp",
+    "static/media/star-present.svg": "./static/media/star-present.771e20eb2d1ebb67ae10a3b0656ce894.svg",
+    "static/media/like-active.svg": "./static/media/like-active.e2ff34be7b554390a8d9.svg",
+    "static/media/like-hover.svg": "./static/media/like-hover.ae5224777fb9525e2fbf.svg",
+    "static/media/like-inactive.svg": "./static/media/like-inactive.12e0baf1a8017f8b5e41.svg",
+    "index.html": "./index.html",
+    "static/media/exit-logo.svg": "./static/media/exit-logo.6541d62259e47627326550b1557c3866.svg",
+    "static/media/sort-icon.svg": "./static/media/sort-icon.b8d9ee4162648e2556ce2550c79eab2d.svg",
+    "static/media/breadcrumb-divider.svg": "./static/media/breadcrumb-divider.ecfc16f7a5f0685dc81942c312c3f763.svg",
+    "static/media/hotel-duration-divider.svg": "./static/media/hotel-duration-divider.5091d45c88f3cc6b6a61fb0f40a5e3ef.svg",
+    "main.a22f13be.css.map": "./static/css/main.a22f13be.css.map",
+    "main.3a2762f9.js.map": "./static/js/main.3a2762f9.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a22f13be.css",
+    "static/js/main.3a2762f9.js"
+  ]
+}
