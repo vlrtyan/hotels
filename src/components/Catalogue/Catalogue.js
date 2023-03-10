@@ -2,7 +2,6 @@ import "./Catalogue.css";
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import Hotel from "../Hotel/Hotel";
-import { Link } from "react-router-dom";
 import breadcrumbDivider from "../../images/breadcrumb-divider.svg";
 import { carouselImages, getNoun, formatDate } from "../../utils/constants";
 import { getHotelsRequest } from "../../redux/actions";

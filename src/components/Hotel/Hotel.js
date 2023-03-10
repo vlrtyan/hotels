@@ -18,6 +18,7 @@ function Hotel({
   const hotelIsLiked = favouriteHotels.find((i) => i.hotelId === hotel.hotelId);
   const handleLikeClick = () => {
     hotelIsLiked ? deleteFromFavourite(hotel) : addToFavourite(hotel, search);
+    
   };
 
   const likeButtonClass = `hotel__like ${

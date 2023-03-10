@@ -7,6 +7,10 @@ export const carouselImages = [
   { name: "Лес", src: image2 },
   { name: "Дорога в лесу", src: image3 },
   { name: "Дорога в лесу", src: image4 },
+  { name: "Дорога в лесу", src: image4 },
+  { name: "Дорога в лесу", src: image4 },
+  { name: "Дорога в лесу", src: image4 },
+  { name: "Дорога в лесу", src: image4 },
 ];
 
 export const getNoun = (number, one, two, five) => {
