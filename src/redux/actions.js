@@ -32,3 +32,11 @@ export function deleteFromFavourite(hotel) {
     payload: hotel,
   };
 }
+
+export function sortFavouriteHotels (criterion, ascendingOrder) {
+  return {
+    type: "SORT_FAVOURITE_HOTELS",
+    criterion: criterion,
+    ascendingOrder: ascendingOrder,
+  };
+}

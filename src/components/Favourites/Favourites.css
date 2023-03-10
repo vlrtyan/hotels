@@ -37,11 +37,37 @@
   flex-direction: row;
   align-items: center;
   cursor: pointer;
-  transition: 0.5;
+  transition: 0.3s;
+}
+
+.sort-button__image {
+  width: 18px;
+  height: 18px;
+  background-image: url(../../images/sort-icon-inactive.svg);
+}
+
+.sort-button_type_ascending .sort-button__image {
+  background-image: url(../../images/sort-icon-ascending.svg);
+}
+
+.sort-button_type_descending .sort-button__image {
+  background-image: url(../../images/sort-icon-descending.svg);
 }
 
 .sort-button:hover {
   opacity: 0.5;
+}
+
+.sort-button_type_inactive {
+  border: 1px solid #E5E5E5;
+}
+
+.sort-button_type_inactive .sort-button__text {
+  color: #99A0A3;
+}
+
+.sort-button_inactive .sort-button__image {
+  background-image: url(../../images/sort-icon-inactive.svg);
 }
 
 .sort-button__text {
