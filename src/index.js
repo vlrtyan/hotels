@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./redux/rootReducer";
-import watchGetHotelsRequest from "./redux/sagas";
+import rootSaga from "./redux/sagas";
 
 const saga = createSagaMiddleware();
 
@@ -20,7 +20,7 @@ const store = createStore(
   )
 );
 
-saga.run(watchGetHotelsRequest)
+saga.run(rootSaga)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

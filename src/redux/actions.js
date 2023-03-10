@@ -34,10 +34,16 @@ export function deleteFromFavourite(hotel) {
   };
 }
 
-export function sortFavouriteHotels (criterion, ascendingOrder) {
+export function changeSortCriteria(criterion, isAscending) {
+  return {
+    type: "CHANGE_SORT_CRITERIA",
+    payload: {criterion, isAscending}
+  }
+}
+
+export function sortFavouriteHotels (criterion, isAscending) {
   return {
     type: "SORT_FAVOURITE_HOTELS",
-    criterion: criterion,
-    ascendingOrder: ascendingOrder,
+    payload: {criterion, isAscending}
   };
 }

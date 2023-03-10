@@ -1,6 +1,10 @@
 const initialState = {
   searchResult: [],
   favouriteHotels: [],
+  sortCriteria: {
+    criterion: "sortByRating",
+    isAscending: false,
+  },
 };
 
 const hotelsReducer = (state = initialState, action) => {
@@ -14,7 +18,6 @@ const hotelsReducer = (state = initialState, action) => {
       const liked = action.payload;
       liked.date = action.search.date;
       liked.days = action.search.days;
-      console.log(liked)
       return {
         ...state,
         favouriteHotels: [...state.favouriteHotels, action.payload],
@@ -33,9 +36,9 @@ const hotelsReducer = (state = initialState, action) => {
         ...state,
         favouriteHotels: [
           ...state.favouriteHotels.sort((a, b) => {
-            switch (action.criterion) {
+            switch (action.payload.criterion) {
               case "sortByRating":
-                return action.ascendingOrder
+                return action.payload.isAscending
                   ? a.stars > b.stars
                     ? 1
                     : -1
@@ -43,7 +46,7 @@ const hotelsReducer = (state = initialState, action) => {
                   ? -1
                   : 1;
               case "sortByPrice":
-                return action.ascendingOrder
+                return action.payload.isAscending
                   ? a.priceAvg > b.priceAvg
                     ? 1
                     : -1
@@ -55,6 +58,12 @@ const hotelsReducer = (state = initialState, action) => {
             }
           }),
         ],
+      };
+    case "CHANGE_SORT_CRITERIA":
+      const {criterion, isAscending} = action.payload;
+      return {
+        ...state,
+        sortCriteria: {criterion, isAscending}
       };
     default:
       return state;

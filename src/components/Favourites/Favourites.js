@@ -2,27 +2,25 @@ import "./Favourites.css";
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import FavouriteHotel from "../FavouriteHotel/FavouriteHotel";
-import { sortFavouriteHotels } from "../../redux/actions";
+import { changeSortCriteria, sortFavouriteHotels } from "../../redux/actions";
 
-function Favourites({ sortFavouriteHotels }) {
+function Favourites({ sortCriterion, isAscending, changeSortCriteria, sortFavouriteHotels }) {
   const favouriteHotels = useSelector((state) => state.hotels.favouriteHotels);
-  const [sortCriterion, setSortCriterion] = React.useState("sortByRating");
-  const [sortOrderAscending, setSortOrderAscending] = React.useState(false);
 
   const handleSort = (e) => {
     const sort = e.currentTarget.id;
     if (sort === sortCriterion) {
-      setSortOrderAscending(!sortOrderAscending);
-      sortFavouriteHotels(sortCriterion, !sortOrderAscending);
+      changeSortCriteria(sortCriterion, !isAscending);
     } else {
-      setSortCriterion(sort);
-      sortFavouriteHotels(sort, sortOrderAscending);
+      changeSortCriteria(sort, isAscending);
     }
   };
 
   const sortButtonClass = (id) => {
     if (sortCriterion === id) {
-      return sortOrderAscending ? "sort-button sort-button_type_ascending" : "sort-button sort-button_type_descending";
+      return isAscending
+        ? "sort-button sort-button_type_ascending"
+        : "sort-button sort-button_type_descending";
     } else {
       return "sort-button sort-button_type_inactive";
     }
@@ -64,4 +62,11 @@ function Favourites({ sortFavouriteHotels }) {
   );
 }
 
-export default connect(null, { sortFavouriteHotels })(Favourites);
+function mapStateToProps(state) {
+  return {
+    sortCriterion: state.hotels.sortCriteria.criterion,
+    isAscending: state.hotels.sortCriteria.isAscending,
+  };
+}
+
+export default connect(mapStateToProps, { changeSortCriteria, sortFavouriteHotels })(Favourites);
