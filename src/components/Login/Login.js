@@ -1,10 +1,8 @@
 import "./Login.css";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { validation } from "../../utils/validation";
 
-function Login() {
-  const navigate = useNavigate();
+function Login({login}) {
   const [formData, setFormData] = React.useState({
     login: "",
     password: "",
@@ -25,7 +23,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormData({ login: "", password: "" });
-    navigate("/");
+    login(formData);
   };
   return (
     <main className="login">

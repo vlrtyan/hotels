@@ -1,16 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./SearchForm.css";
-// import { validation } from "../../utils/validation";
-import { today } from "../../utils/constants";
+import { changeSearch } from "../../redux/actions";
 
-function SearchForm({ handleSearch }) {
+function SearchForm({ search, changeSearch, findHotels }) {
   const [formData, setFormData] = React.useState({
-    city: "Москва",
-    date: today,
-    days: "1",
+    city: search.city,
+    date: search.date,
+    days: search.days,
   });
-  // const [errors, setErrors] = React.useState({ city: "", date: "", days: "" });
-  // const isValid = errors.email === undefined && errors.password === undefined;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,12 +16,12 @@ function SearchForm({ handleSearch }) {
       ...formData,
       [name]: value,
     });
-    // setErrors({ ...errors, [name]: validation(name, value) });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleSearch(formData);
+    changeSearch(formData);
+    // findHotels(formData);
   };
 
   return (
@@ -60,9 +58,8 @@ function SearchForm({ handleSearch }) {
       />
       <button
         className="search__button"
-        type="button"
+        type="submit"
         onSubmit={handleSubmit}
-        // disabled={!isValid}
       >
         <span className="span_type_search-button">Найти</span>
       </button>
@@ -70,4 +67,10 @@ function SearchForm({ handleSearch }) {
   );
 }
 
-export default SearchForm;
+function mapStateToProps(state) {
+  return {
+    search: state.search,
+  };
+}
+
+export default connect(mapStateToProps, { changeSearch })(SearchForm);

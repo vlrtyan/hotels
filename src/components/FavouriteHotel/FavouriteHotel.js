@@ -1,13 +1,29 @@
+import React from "react";
+import { connect } from "react-redux";
+
 import "./FavouriteHotel.css";
 import starActive from "../../images/star-present.svg";
 import starInactive from "../../images/star-absent.svg";
 import durationDash from "../../images/hotel-duration-divider.svg";
+import { deleteFromFavourite } from "../../redux/actions";
 
-function FavouriteHotel() {
+function FavouriteHotel({
+  favouriteHotel,
+  favouriteHotels,
+  deleteFromFavourite,
+}) {
+  const handleLikeClick = () => {
+    deleteFromFavourite(favouriteHotel);
+  };
+
+  const likeButtonClass = `favourite__like ${
+    favouriteHotels.includes(favouriteHotel) ? "favourite__like_active" : ""
+  }`;
+
   return (
     <div className="favourite">
-      <p className="favourite__name">Moscow Marriott Grand Hotel</p>
-      <button className="favourite__like favourite__like_active"></button>
+      <p className="favourite__name">{favouriteHotel.hotelName}</p>
+      <button className={likeButtonClass} onClick={handleLikeClick}></button>
       <div className="favourite__duration">
         <p className="favourite__date">28 June, 2020</p>
         <img className="favourite__dash" src={durationDash} alt="Серое тире" />
@@ -15,7 +31,7 @@ function FavouriteHotel() {
       </div>
       <div className="favourite__rating">
         {[...Array(5)].map((star, index) =>
-          index < 5 ? (
+          index < favouriteHotel.stars ? (
             <img
               key={index}
               className="hotel_star"
@@ -34,10 +50,12 @@ function FavouriteHotel() {
       </div>
       <p className="favourite__price">
         Price:
-        <span className="span_type_favourite-price">23 924 ₽</span>
+        <span className="span_type_favourite-price">{`${favouriteHotel.priceFrom.toLocaleString(
+          "ru"
+        )} ₽`}</span>
       </p>
     </div>
   );
 }
 
-export default FavouriteHotel;
+export default connect(null, { deleteFromFavourite })(FavouriteHotel);

@@ -23,6 +23,7 @@
   line-height: 1.29;
   letter-spacing: -0.408px;
   color: #424242;
+  max-width: 210px;
 }
 
 .favourite__like {

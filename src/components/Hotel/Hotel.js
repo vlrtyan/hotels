@@ -1,10 +1,30 @@
 import "./Hotel.css";
 import React from "react";
+import { connect } from "react-redux";
+
 import durationDash from "../../images/hotel-duration-divider.svg";
 import starActive from "../../images/star-present.svg";
 import starInactive from "../../images/star-absent.svg";
+import { addToFavourite, deleteFromFavourite } from "../../redux/actions";
+import { getNoun } from "../../utils/constants";
 
-function Hotel({ hotel }) {
+function Hotel({
+  favouriteHotels,
+  hotel,
+  addToFavourite,
+  deleteFromFavourite,
+  search,
+}) {
+  const handleLikeClick = () => {
+    favouriteHotels.includes(hotel)
+      ? deleteFromFavourite(hotel)
+      : addToFavourite(hotel);
+  };
+
+  const likeButtonClass = `hotel__like ${
+    favouriteHotels.includes(hotel) ? "hotel__like_active" : ""
+  }`;
+
   return (
     <div className="hotel">
       <img
@@ -14,11 +34,17 @@ function Hotel({ hotel }) {
         alt={hotel.hotelName}
       />
       <p className="hotel__name">{hotel.hotelName}</p>
-      <button className="hotel__like"></button>
+      <button className={likeButtonClass} onClick={handleLikeClick}></button>
       <div className="hotel__duration">
-        <p className="hotel__date">7 июля 2020</p>
+        <p className="hotel__date">{`${new Date(search.date).toLocaleDateString(
+          "ru",
+          {
+            day: "2-digit",
+            month: "long",
+          }
+        )} ${new Date(search.date).getFullYear()}`}</p>
         <img className="hotel__dash" src={durationDash} alt="Серое тире" />
-        <p className="hotel__days">1 день</p>
+        <p className="hotel__days">{`${search.days}  ${getNoun(search.days, "день", "дня", "дней")}`}</p>
       </div>
       <div className="hotel__rating">
         {[...Array(5)].map((star, index) =>
@@ -49,4 +75,13 @@ function Hotel({ hotel }) {
   );
 }
 
-export default Hotel;
+function mapStateToProps(state) {
+  return {
+    search: state.search,
+  };
+}
+
+export default connect(mapStateToProps, {
+  addToFavourite,
+  deleteFromFavourite,
+})(Hotel);

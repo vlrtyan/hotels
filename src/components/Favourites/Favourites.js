@@ -1,8 +1,14 @@
-import "./Favourites.css"
+import "./Favourites.css";
+import React from "react";
+import { connect, useSelector } from "react-redux";
 import sortIcon from "../../images/sort-icon.svg";
 import FavouriteHotel from "../FavouriteHotel/FavouriteHotel";
 
 function Favourites() {
+  const favouriteHotels = useSelector((state) => state.hotels.favouriteHotels);
+
+  
+
   return (
     <div className="favourites">
       <h2 className="favourites__title">Избранное</h2>
@@ -17,10 +23,12 @@ function Favourites() {
         </button>
       </div>
       <div className="favourites__list">
-        <FavouriteHotel />
+        {favouriteHotels.map((favourite) => (
+          <FavouriteHotel key={favourite.hotelId} favouriteHotel={favourite} favouriteHotels={favouriteHotels} />
+        ))}
       </div>
     </div>
   );
 }
 
-export default Favourites;
+export default connect()(Favourites);
