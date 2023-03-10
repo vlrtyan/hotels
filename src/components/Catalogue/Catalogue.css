@@ -31,7 +31,7 @@
     flex-direction: row;
 }
 
-.breadcrumb-navigation__link {
+.breadcrumb-navigation__item {
     font-style: normal;
     font-weight: 500;
     font-size: 32px;
@@ -42,14 +42,14 @@
 }
 
 .breadcrumb-navigation__divider {
-    margin-right: 20px;
+    margin-left: 20px;
 }
 
 .breadcrumb-navigation__item:last-of-type .breadcrumb-navigation__divider {
     display: none;
 }
 
-.breadcrumb-navigation__item:last-of-type .breadcrumb-navigation__link {
+.breadcrumb-navigation__item:last-of-type {
     margin-right: 0;
 }
 

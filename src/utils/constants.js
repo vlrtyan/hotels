@@ -8,7 +8,6 @@ export const carouselImages = [
   { name: "Дорога в лесу", src: image3 },
   { name: "Дорога в лесу", src: image4 },
 ];
-export const today = new Date().toISOString().split("T")[0];
 
 export const getNoun = (number, one, two, five) => {
   let n = Math.abs(number);
@@ -25,3 +24,21 @@ export const getNoun = (number, one, two, five) => {
   }
   return five;
 };
+
+export const getPrice = (number) => {
+  return Math.ceil(number).toLocaleString("ru") + " ₽";
+};
+
+export const formatDate = (date, format) => {
+  if (format === "long") {
+    return `${new Date(date).toLocaleDateString("ru", {
+      day: "2-digit",
+      month: "long",
+    })} ${new Date(date).getFullYear()}`;
+  }
+  if (format === "iso") {
+    return date.toISOString().split("T")[0];
+  }
+};
+
+export const today = formatDate(new Date(), "iso");

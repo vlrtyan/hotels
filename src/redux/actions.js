@@ -19,10 +19,11 @@ export function getHotelsSuccess(hotels) {
   };
 }
 
-export function addToFavourite(hotel) {
+export function addToFavourite(hotel, search) {
   return {
     type: "ADD_TO_FAVOURITE",
     payload: hotel,
+    search: search,
   };
 }
 

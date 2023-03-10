@@ -6,7 +6,7 @@ import durationDash from "../../images/hotel-duration-divider.svg";
 import starActive from "../../images/star-present.svg";
 import starInactive from "../../images/star-absent.svg";
 import { addToFavourite, deleteFromFavourite } from "../../redux/actions";
-import { getNoun } from "../../utils/constants";
+import { getNoun, getPrice, formatDate } from "../../utils/constants";
 
 function Hotel({
   favouriteHotels,
@@ -15,36 +15,33 @@ function Hotel({
   deleteFromFavourite,
   search,
 }) {
+  const hotelIsLiked = favouriteHotels.find((i) => i.hotelId === hotel.hotelId);
   const handleLikeClick = () => {
-    favouriteHotels.includes(hotel)
-      ? deleteFromFavourite(hotel)
-      : addToFavourite(hotel);
+    hotelIsLiked ? deleteFromFavourite(hotel) : addToFavourite(hotel, search);
   };
 
   const likeButtonClass = `hotel__like ${
-    favouriteHotels.includes(hotel) ? "hotel__like_active" : ""
+    hotelIsLiked ? "hotel__like_active" : ""
   }`;
 
   return (
     <div className="hotel">
       <img
         className="hotel__image"
-        //заглушка
         src="https://www.ahstatic.com/photos/b8l9_ho_00_p_1024x768.jpg"
         alt={hotel.hotelName}
       />
       <p className="hotel__name">{hotel.hotelName}</p>
       <button className={likeButtonClass} onClick={handleLikeClick}></button>
       <div className="hotel__duration">
-        <p className="hotel__date">{`${new Date(search.date).toLocaleDateString(
-          "ru",
-          {
-            day: "2-digit",
-            month: "long",
-          }
-        )} ${new Date(search.date).getFullYear()}`}</p>
+        <p className="hotel__date">{formatDate(search.date, "long")}</p>
         <img className="hotel__dash" src={durationDash} alt="Серое тире" />
-        <p className="hotel__days">{`${search.days}  ${getNoun(search.days, "день", "дня", "дней")}`}</p>
+        <p className="hotel__days">{`${search.days}  ${getNoun(
+          search.days,
+          "день",
+          "дня",
+          "дней"
+        )}`}</p>
       </div>
       <div className="hotel__rating">
         {[...Array(5)].map((star, index) =>
@@ -67,9 +64,9 @@ function Hotel({
       </div>
       <p className="hotel__price">
         Price:{" "}
-        <span className="span_type_hotel-price">{`${hotel.priceFrom.toLocaleString(
-          "ru"
-        )} ₽`}</span>
+        <span className="span_type_hotel-price">
+          {getPrice(hotel.priceFrom)}
+        </span>
       </p>
     </div>
   );

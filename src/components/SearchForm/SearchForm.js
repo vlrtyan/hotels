@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./SearchForm.css";
 import { changeSearch } from "../../redux/actions";
 
-function SearchForm({ search, changeSearch, findHotels }) {
+function SearchForm({ search, changeSearch }) {
   const [formData, setFormData] = React.useState({
     city: search.city,
     date: search.date,
@@ -21,7 +21,6 @@ function SearchForm({ search, changeSearch, findHotels }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     changeSearch(formData);
-    // findHotels(formData);
   };
 
   return (

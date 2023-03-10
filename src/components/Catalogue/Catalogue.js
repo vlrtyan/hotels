@@ -4,11 +4,10 @@ import { connect, useSelector } from "react-redux";
 import Hotel from "../Hotel/Hotel";
 import { Link } from "react-router-dom";
 import breadcrumbDivider from "../../images/breadcrumb-divider.svg";
-import { carouselImages, getNoun } from "../../utils/constants";
+import { carouselImages, getNoun, formatDate } from "../../utils/constants";
 import { getHotelsRequest } from "../../redux/actions";
 
 function Catalogue({ search, hotels, getHotelsRequest }) {
-
   const favouriteHotels = useSelector((state) => state.hotels.favouriteHotels);
 
   React.useEffect(() => {
@@ -20,7 +19,7 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
       <div className="catalogue__header">
         <ul className="breadcrumb-navigation">
           <li className="breadcrumb-navigation__item">
-            <Link className="breadcrumb-navigation__link">Отели</Link>
+            Отели
             <img
               className="breadcrumb-navigation__divider"
               src={breadcrumbDivider}
@@ -28,7 +27,7 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
             />
           </li>
           <li className="breadcrumb-navigation__item">
-            <Link className="breadcrumb-navigation__link">{search.city}</Link>
+            {search.city}
             <img
               className="breadcrumb-navigation__divider"
               src={breadcrumbDivider}
@@ -37,10 +36,7 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
           </li>
         </ul>
         <p className="catalogue__checkin-date">
-          {`${new Date(search.date).toLocaleDateString("ru", {
-            day: "2-digit",
-            month: "long",
-          })} ${new Date(search.date).getFullYear()}`}
+          {formatDate(search.date, "long")}
         </p>
       </div>
       <div className="catalogue-carousel">
@@ -54,7 +50,8 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
         ))}
       </div>
       <p className="catalogue__favourites">
-        Добавлено в Избранное:<span className="catalogue__span">{favouriteHotels.length}</span>
+        Добавлено в Избранное:
+        <span className="catalogue__span">{favouriteHotels.length}</span>
         {getNoun(favouriteHotels.length, "отель", "отеля", "отелей")}
       </p>
       <ul className="catalogue__list">

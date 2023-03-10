@@ -1,5 +1,6 @@
 import { takeEvery, put } from "redux-saga/effects";
 import { getHotelsSuccess } from "../redux/actions";
+import { formatDate } from "../utils/constants";
 
 const getResponseData = (res) => {
   if (res.ok) {
@@ -19,7 +20,7 @@ function* searchHotels(action) {
   checkOut.setDate(checkOut.getDate() + Number(days));
   const data = yield fetch(
     `https://engine.hotellook.com/api/v2/cache.json?location=${city}&currency=rub&checkIn=${date}&checkOut=${
-      checkOut.toISOString().split("T")[0]
+      formatDate(checkOut, "iso")
     }&limit=30`
   )
     .then(getResponseData)

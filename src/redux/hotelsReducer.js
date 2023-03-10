@@ -11,6 +11,10 @@ const hotelsReducer = (state = initialState, action) => {
         searchResult: action.payload,
       };
     case "ADD_TO_FAVOURITE":
+      const liked = action.payload;
+      liked.date = action.search.date;
+      liked.days = action.search.days;
+      console.log(liked)
       return {
         ...state,
         favouriteHotels: [...state.favouriteHotels, action.payload],

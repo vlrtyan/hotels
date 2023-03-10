@@ -1,17 +1,19 @@
 import React from "react";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
 import "./FavouriteHotel.css";
 import starActive from "../../images/star-present.svg";
 import starInactive from "../../images/star-absent.svg";
 import durationDash from "../../images/hotel-duration-divider.svg";
 import { deleteFromFavourite } from "../../redux/actions";
+import { getNoun, getPrice, formatDate } from "../../utils/constants";
 
 function FavouriteHotel({
   favouriteHotel,
   favouriteHotels,
   deleteFromFavourite,
 }) {
+  
   const handleLikeClick = () => {
     deleteFromFavourite(favouriteHotel);
   };
@@ -25,9 +27,9 @@ function FavouriteHotel({
       <p className="favourite__name">{favouriteHotel.hotelName}</p>
       <button className={likeButtonClass} onClick={handleLikeClick}></button>
       <div className="favourite__duration">
-        <p className="favourite__date">28 June, 2020</p>
+        <p className="favourite__date">{formatDate(favouriteHotel.date, "long")}</p>
         <img className="favourite__dash" src={durationDash} alt="Серое тире" />
-        <p className="favourite__days">1 день</p>
+        <p className="favourite__days">{`${favouriteHotel.days}  ${getNoun(favouriteHotel.days, "день", "дня", "дней")}`}</p>
       </div>
       <div className="favourite__rating">
         {[...Array(5)].map((star, index) =>
@@ -50,9 +52,7 @@ function FavouriteHotel({
       </div>
       <p className="favourite__price">
         Price:
-        <span className="span_type_favourite-price">{`${favouriteHotel.priceFrom.toLocaleString(
-          "ru"
-        )} ₽`}</span>
+        <span className="span_type_favourite-price">{getPrice(favouriteHotel.priceFrom)}</span>
       </p>
     </div>
   );
