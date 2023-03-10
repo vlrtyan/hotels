@@ -1,12 +1,7 @@
 .favourite {
-  display: grid;
-  grid-template-areas:
-    "fav-name fav-like"
-    "fav-duration ."
-    "fav-rating fav-price";
-  grid-template-columns: max-content auto;
   padding: 16px 0 15px;
   border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+  position: relative;
 }
 
 .favourite:last-child {
@@ -14,8 +9,11 @@
   padding-bottom: 0;
 }
 
+.favourite:first-child {
+  padding-top: 0;
+}
+
 .favourite__name {
-  grid-area: fav-name;
   margin: 0 0 4px 0;
   font-style: normal;
   font-weight: 300;
@@ -27,7 +25,9 @@
 }
 
 .favourite__like {
-  grid-area: fav-like;
+  position: absolute;
+  right: 0;
+  top: 16px;
   margin: 0 0 0 auto;
   width: 21px;
   height: 18px;
@@ -49,7 +49,6 @@
 }
 
 .favourite__duration {
-  grid-area: fav-duration;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -59,7 +58,7 @@
   line-height: 1.57;
   letter-spacing: -0.408px;
   color: #878787;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
 .favourite__date {
@@ -75,8 +74,6 @@
 }
 
 .favourite__rating {
-  grid-area: fav-rating;
-  margin-top: 8px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -89,7 +86,9 @@
 }
 
 .favourite__price {
-  grid-area: fav-price;
+  position: absolute;
+  right: 0;
+  bottom: 18px;
   font-style: normal;
   font-weight: 300;
   font-size: 11px;
@@ -97,6 +96,10 @@
   letter-spacing: -0.408px;
   color: #878787;
   margin: 0 auto 0 -23px;
+}
+
+.favourite:last-child .favourite__price {
+  bottom: 3px;
 }
 
 .span_type_favourite-price {
