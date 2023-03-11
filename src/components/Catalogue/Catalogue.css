@@ -54,12 +54,40 @@
 }
 
 .catalogue-carousel {
+    margin: 0 32px;
+    position: relative;
+}
+
+.catalogue-carousel__nav {
+    height: 149px;
+    width: 50px;
+    background-color: white;
+    position: absolute;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.catalogue-carousel__nav:hover {
+    opacity: 0.2;
+    filter: blur(10px);
+}
+
+.catalogue-carousel__nav_type_left {
+    left: 0;
+    top: 0;
+}
+
+.catalogue-carousel__nav_type_right {
+    right: 0;
+    top: 0;
+}
+
+.catalogue-carousel__container {
     display: flex;
     flex-direction: row;
     gap: 12px;
-    overflow-x: scroll;
-    padding: 0 0 28px 32px;
-    margin-right: 32px;
+    overflow-x: hidden;
+    padding: 0 0 28px 0;
 }
 
 .catalogue-carousel__photo {

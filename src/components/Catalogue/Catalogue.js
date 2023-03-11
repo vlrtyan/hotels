@@ -7,7 +7,19 @@ import { carouselImages, getNoun, formatDate } from "../../utils/constants";
 import { getHotelsRequest } from "../../redux/actions";
 
 function Catalogue({ search, hotels, getHotelsRequest }) {
+  const carousel = document.querySelector(".catalogue-carousel__container");
   const favouriteHotels = useSelector((state) => state.hotels.favouriteHotels);
+
+  const handleCarouselClick = (e) => {
+    const img = carousel.querySelector(".catalogue-carousel__photo");
+    const buttonType = e.currentTarget.id;
+    const imgWidth = img.clientWidth + 12;
+    if (buttonType === "rightButton") {
+      carousel.scrollLeft += imgWidth;
+    } else if (buttonType === "leftButton") {
+      carousel.scrollLeft -= imgWidth;
+    }
+  };
 
   React.useEffect(() => {
     getHotelsRequest(search);
@@ -39,14 +51,26 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
         </p>
       </div>
       <div className="catalogue-carousel">
-        {carouselImages.map((image, index) => (
-          <img
-            key={index}
-            className="catalogue-carousel__photo"
-            src={image.src}
-            alt={image.name}
-          />
-        ))}
+        <div
+          className="catalogue-carousel__nav catalogue-carousel__nav_type_left"
+          onClick={handleCarouselClick}
+          id="leftButton"
+        ></div>
+        <div className="catalogue-carousel__container">
+          {carouselImages.map((image, index) => (
+            <img
+              key={index}
+              className="catalogue-carousel__photo"
+              src={image.src}
+              alt={image.name}
+            />
+          ))}
+        </div>
+        <div
+          className="catalogue-carousel__nav catalogue-carousel__nav_type_right"
+          onClick={handleCarouselClick}
+          id="rightButton"
+        ></div>
       </div>
       <p className="catalogue__favourites">
         Добавлено в Избранное:
@@ -54,15 +78,13 @@ function Catalogue({ search, hotels, getHotelsRequest }) {
         {getNoun(favouriteHotels.length, "отель", "отеля", "отелей")}
       </p>
       <ul className="catalogue__list">
-        {hotels
-          ? hotels.map((hotel) => (
-              <Hotel
-                key={hotel.hotelId}
-                hotel={hotel}
-                favouriteHotels={favouriteHotels}
-              />
-            ))
-          : ""}
+        {hotels.map((hotel) => (
+          <Hotel
+            key={hotel.hotelId}
+            hotel={hotel}
+            favouriteHotels={favouriteHotels}
+          />
+        ))}
       </ul>
     </div>
   );

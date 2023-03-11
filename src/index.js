@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import "./vendor/normalize.css";
 import App from "./components/App/App";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { applyMiddleware, compose, createStore } from "redux";
 import createSagaMiddleware from "redux-saga";
@@ -15,20 +15,18 @@ const saga = createSagaMiddleware();
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(saga),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
+    applyMiddleware(saga))
 );
 
 saga.run(rootSaga)
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <React.StrictMode>
       <Provider store={store}>
         <App />
       </Provider>
     </React.StrictMode>
-  </BrowserRouter>
+  </HashRouter>
 );
