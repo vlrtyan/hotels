@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./SearchForm.css";
+import { today } from "../../utils/constants";
 import { changeSearch } from "../../redux/actions";
 
 function SearchForm({ search, changeSearch }) {
@@ -43,6 +44,7 @@ function SearchForm({ search, changeSearch }) {
         id="date"
         onChange={handleChange}
         value={formData.date}
+        min={today}
         required
       />
       <label className="search__label">Количество дней</label>
@@ -53,13 +55,10 @@ function SearchForm({ search, changeSearch }) {
         id="days"
         onChange={handleChange}
         value={formData.days}
+        min="1"
         required
       />
-      <button
-        className="search__button"
-        type="submit"
-        onSubmit={handleSubmit}
-      >
+      <button className="search__button" type="submit" onSubmit={handleSubmit}>
         <span className="span_type_search-button">Найти</span>
       </button>
     </form>

@@ -2,9 +2,9 @@ import "./Favourites.css";
 import React from "react";
 import { connect, useSelector } from "react-redux";
 import FavouriteHotel from "../FavouriteHotel/FavouriteHotel";
-import { changeSortCriteria, sortFavouriteHotels } from "../../redux/actions";
+import { changeSortCriteria } from "../../redux/actions";
 
-function Favourites({ sortCriterion, isAscending, changeSortCriteria, sortFavouriteHotels }) {
+function Favourites({ sortCriterion, isAscending, changeSortCriteria }) {
   const favouriteHotels = useSelector((state) => state.hotels.favouriteHotels);
 
   const handleSort = (e) => {
@@ -69,4 +69,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { changeSortCriteria, sortFavouriteHotels })(Favourites);
+export default connect(mapStateToProps, { changeSortCriteria })(Favourites);
